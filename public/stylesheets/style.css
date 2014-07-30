@@ -1,8 +1,42 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+    background-color: #000000;
 }
 
-a {
-  color: #00B7FF;
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #4F9AB8;
+    margin: 0 auto;
+    width: 1024px;
+}
+
+/* h1 { */
+/*     margin: 0; */
+/* } */
+
+header {
+    background-color: #FF9900;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+}
+
+.container {
+    margin: 0 auto;
+    position: relative;
+    width: 1024px;
+}
+
+header h1 {
+    display: inline;
+    padding: 0 8px;
+}
+
+header form {
+    display: inline-block;
 }
