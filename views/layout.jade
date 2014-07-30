@@ -1,7 +1,9 @@
 doctype html
-html
+html(ng-app="twitterApp")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js')
+    script(src='javascripts/controllers.js')
+  body(ng-controller="TwitterAppCtrl")
     block content

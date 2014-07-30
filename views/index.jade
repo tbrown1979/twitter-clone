@@ -3,3 +3,10 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  
+  form(ng-submit="submitUsername(desiredUsername)")
+    .input-group
+      div(ng-hide="!error")
+        |{$error}
+      input.usernameEntry(ng-model="desiredUsername" type="text" placeholder="Enter username here")
+      button.usernameSubmit(type="submit" value="Submit") Submit
