@@ -13,17 +13,12 @@ body {
     width: 1024px;
 }
 
-/* h1 { */
-/*     margin: 0; */
-/* } */
-
 header {
     background-color: #FF9900;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-
 }
 
 .container {

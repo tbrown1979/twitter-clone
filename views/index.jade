@@ -6,7 +6,7 @@ block content
     .container
       h1
         | Sup homies
-      form(ng-submit="submitUsername(desiredUsername)")
+      form(ng-submit="submitUsername(desiredUsername)" ng-hide="username")
         .input-group
           div(ng-hide="!error")
             |{{error}}

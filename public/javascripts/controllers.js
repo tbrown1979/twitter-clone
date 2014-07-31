@@ -2,8 +2,8 @@ var app = angular.module("twitterApp", []);
 
 //twitterApp.controller('', ["$scope", "$http",
 function TwitterAppCtrl($scope, $http) {
-  $scope.username = "";
-  $scope.error = "";
+  $scope.username;
+  $scope.error;
 
   $scope.submitUsername =
     function(desiredUsername) {
