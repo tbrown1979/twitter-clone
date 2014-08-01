@@ -11,11 +11,11 @@ var configDB = require('./config/db.js');
 
 mongoose.connect(configDB.url);
 
-var routes = require('./routes/index');
+var routes = require('./config/routes.js');
 //var users  = require('./routes/users');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('./app/views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(favicon());

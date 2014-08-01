@@ -1,14 +1,12 @@
-var express = require('express');
-var router = express.Router();
 var User = require('../models/user.js');
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
+exports.home = function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/setUsername', function(req, res) {
+exports.setUsername =  function(req, res) {
   var username = req.body.username
   User.findOne({"username": username}, function(err, user) {
     console.log(user);
