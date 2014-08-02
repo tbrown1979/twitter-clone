@@ -5,17 +5,20 @@ var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
+var passport     = require('passport');
+var flash        = require('connect-flash');
+
 var app = express();
 
 var configDB = require('./config/db.js');
 
 mongoose.connect(configDB.url);
 
-var routes = require('./config/routes.js');
+var routes = require('./config/routes.js')(app);
 //var users  = require('./routes/users');
 
 // view engine setup
-app.set('./app/views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');
 
 app.use(favicon());

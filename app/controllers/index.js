@@ -4,7 +4,7 @@ var User = require('../models/user.js');
 /* GET home page. */
 exports.home = function(req, res) {
   res.render('index', { title: 'Express' });
-});
+};
 
 exports.setUsername =  function(req, res) {
   var username = req.body.username
@@ -27,6 +27,4 @@ exports.setUsername =  function(req, res) {
       });
     }
   });
-});
-
-module.exports = router;
+};
