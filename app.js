@@ -7,6 +7,7 @@ var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
 var passport     = require('passport');
 var flash        = require('connect-flash');
+var session      = require('express-session');
 
 var app = express();
 
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use(session({ secret: 'terp' }));
+app.use(session({ secret: 'terp' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

@@ -9,8 +9,6 @@ exports.home = function(req, res) {
 exports.setUsername =  function(req, res) {
   var username = req.body.username
   User.findOne({"username": username}, function(err, user) {
-    console.log(user);
-    console.log(username);
     if (err)
       res.json({message: "Failed to store username", type: "Failure"});
 
@@ -28,3 +26,7 @@ exports.setUsername =  function(req, res) {
     }
   });
 };
+
+exports.testController = function(req, res) {
+  res.render('index', { 'user': req.user.username });
+}
