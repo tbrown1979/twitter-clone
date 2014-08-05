@@ -5,17 +5,12 @@ block content
   header
     .container
       h1=user
-      form(ng-submit="submitUsername(desiredUsername)" ng-hide="username")
-        .input-group
-          div(ng-hide="!error")
-            |{{error}}
-          input.usernameEntry(ng-model="desiredUsername" type="text" placeholder="Enter username here")
-          button.usernameSubmit(type="submit" value="Submit") Submit
+
   div.content
     div.jumbotron.text-center
       h1
         span.fa.fa-lock
-        | Node Authentication
+        | Twitter Clone
       p Login or Register with:
       a.btn.btn-primary(href='/auth/facebook')
         img(src='images/login-facebook.png')

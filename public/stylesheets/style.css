@@ -11,6 +11,7 @@ body {
     background-color: #4F9AB8;
     margin: 0 auto;
     width: 1024px;
+    font-family: 'Oswald', sans-serif;
 }
 
 header {
@@ -22,9 +23,24 @@ header {
 }
 
 .container {
+    height: 40px;
     margin: 0 auto;
     position: relative;
     width: 1024px;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+.jumbotron {
+    width: 275px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jumbotron h1 {
+    font-size: 50px;
 }
 
 header h1 {
