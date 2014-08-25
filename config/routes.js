@@ -3,15 +3,10 @@ var express = require('express');
 module.exports = function(app, passport) {
   var routes = require('../app/controllers/index.js')
 
-  //home
-  //router.get('/', routes.home);//use loggedIn middleware
+  app.get('/auth/facebook', passport.authenticate('facebook'));
 
-  //router.post('/setUsername', routes.setUsername);
-
-  app.get('/api/auth/facebook', passport.authenticate('facebook'));
-
-  app.get('/api/auth/facebook/callback',
-             passport.authenticate('facebook', { successRedirect: '/test',
+  app.get('/auth/facebook/callback',
+             passport.authenticate('facebook', { successRedirect: '/',
                                                  failureRedirect: '/login' }));
 
   app.get('/api/test', isLoggedIn, routes.testController);

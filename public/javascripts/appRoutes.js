@@ -2,11 +2,19 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
   $routeProvider
 
-  // home page
+  //home page
     .when('/', {
       templateUrl: 'views/home.html',
       controller: 'MainController'
     })
+
+
+    // .when('/auth',{
+    //   redirectTo: function () {
+    //     $location.path("/auth/facebook");
+    //     //return "/auth/facebook";
+    //   }
+    // })
 
   // nerds page that will use the NerdController
   //   .when('/nerds', {
