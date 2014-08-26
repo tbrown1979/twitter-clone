@@ -1,5 +1,7 @@
 var express = require('express');
 
+//this all needs to be cleaned up
+
 module.exports = function(app, passport) {
   var routes = require('../app/controllers/index.js')
 
