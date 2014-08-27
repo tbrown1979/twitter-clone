@@ -6,11 +6,11 @@ var userSchema = mongoose.Schema({
   id          : String,
   token       : String,
   displayName : String,
-  statuses    : {
-    type: mongoose.Schema.ObjectId,
-    ref : 'Tweet',
-    default: []
-  }
+  // statuses    : {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref : 'Tweet',
+  //   default: []
+  // }
 });
 
 // var userSchema = mongoose.Schema({

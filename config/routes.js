@@ -21,8 +21,18 @@ module.exports = function(app, passport) {
   app.post('/api/tweet', isLoggedInAjax, function(req, res) {
     console.log(req.body);
     var newTweet = new Tweet();
+    newTweet.text = req.body.tweet;
+    newTweet.user = req.user;
+    newTweet.save(function(err) {
+      if (err) {
+        res.json({
+          status: "error",
+          error: err.errors
+        });
+      }
+      return res.json({status: "success"});
+    });
   })
-
 
   app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html'); // load our public/index.html file
