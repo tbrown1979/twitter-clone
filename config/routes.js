@@ -6,34 +6,21 @@ var Tweet = require('../app/models/tweet.js');
 module.exports = function(app, passport) {
   var routes = require('../app/controllers/index.js')
 
+  //---------------------
+  //Authentication
+  //---------------------
   app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-
   app.get('/auth/facebook/callback',
              passport.authenticate('facebook', { successRedirect: '/profile',
                                                  failureRedirect: '/login' }));
+  //---------------------
+  //Api
+  //---------------------
+  app.get('/api/test'    , isLoggedIn,     routes.testController);
+  app.get('/api/userData', isLoggedInAjax, routes.retrieveUserData);
+  app.post('/api/tweet'  , isLoggedInAjax, routes.storeTweet);
 
-  app.get('/api/test', isLoggedIn, routes.testController);
-
-  app.get('/api/userData', isLoggedInAjax, function(req, res) {
-    res.json({user : req.user});//get User out of session
-  });
-
-  app.post('/api/tweet', isLoggedInAjax, function(req, res) {
-    console.log(req.body);
-    var newTweet = new Tweet();
-    newTweet.text = req.body.tweet;
-    newTweet.user = req.user;
-    newTweet.save(function(err) {
-      if (err) {
-        res.json({
-          status: "error",
-          error: err.errors
-        });
-      }
-      return res.json({status: "success"});
-    });
-  })
-
+  //Catch-all
   app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html'); // load our public/index.html file
   });

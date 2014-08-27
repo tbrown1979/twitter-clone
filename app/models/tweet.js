@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
     Schema = mongoose.Schema;
-//var User = require('./user.js');
 
 var tweetSchema = mongoose.Schema({
   text: String,

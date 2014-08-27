@@ -12,7 +12,8 @@ module.exports = function(passport) {
 
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
-            done(err, id);
+          console.log("ID: " + id);
+          done(err, user);
         });
     });
 
@@ -20,6 +21,7 @@ module.exports = function(passport) {
     clientID        : configAuth.facebookAuth.clientID,
     clientSecret    : configAuth.facebookAuth.clientSecret,
     callbackURL     : configAuth.facebookAuth.callbackURL
+    //profileFields   : ['id', 'displayName', 'photos', 'emails', 'name']
   },
 
   function(token, refreshToken, profile, done) {

@@ -1,5 +1,6 @@
-angular.module('ProfileCtrl', [])
-  .controller('ProfileController', ['$scope', 'userData', 'Tweet', function($scope, userData, Tweet) {
+angular.module('ProfileCtrl', []).controller(
+  'ProfileController', ['$scope', 'userData', 'Tweet', function($scope, userData, Tweet) {
+    console.log(userData);
     $scope.username = userData.data.user.username;
     $scope.tweet = "please enter something...";
     $scope.createTweet = function(tweet) {
@@ -7,4 +8,5 @@ angular.module('ProfileCtrl', [])
       Tweet.create(tweetJson);
     }
     console.log($scope.username);
-  }]);
+  }]
+);

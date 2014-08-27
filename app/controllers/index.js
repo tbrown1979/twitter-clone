@@ -1,32 +1,31 @@
 var User = require('../models/user.js');
+var Tweet = require('../models/tweet.js');
 
-
-/* GET home page. */
 exports.home = function(req, res) {
   res.render('index', { title: 'Express' });
 };
 
-// exports.setUsername =  function(req, res) {
-//   var username = req.body.username
-//   User.findOne({"username": username}, function(err, user) {
-//     if (err)
-//       res.json({message: "Failed to store username", type: "Failure"});
-
-//     if (user) {
-//       res.json({message: "Username already in use", type: "Taken"});
-//     } else {
-//       var newUser = new User();
-
-//       newUser.username = username;
-//       newUser.save(function(err) {
-//         if (err)
-//           throw err;
-//         res.json({type: "Success", "username": username});
-//       });
-//     }
-//   });
-// };
-
 exports.testController = function(req, res) {
   res.render('index', { 'user': req.user.username });
 }
+
+exports.storeTweet = function(req, res) {
+  console.log(req.body);
+  var newTweet = new Tweet();
+  newTweet.text = req.body.tweet;
+  newTweet.user = req.user;
+  newTweet.save(function(err) {
+    if (err) {
+      res.json({
+        status: "error",
+        error: err.errors
+      });
+    }
+    return res.json({status: "success"});
+  });
+};
+
+exports.retrieveUserData = function(req, res) {
+  console.log(req.user);
+  res.json({user : req.user});
+};
