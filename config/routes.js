@@ -1,11 +1,12 @@
 var express = require('express');
+var Tweet = require('../app/models/tweet.js');
 
 //this all needs to be cleaned up
 
 module.exports = function(app, passport) {
   var routes = require('../app/controllers/index.js')
 
-  app.get('/auth/facebook', passport.authenticate('facebook'));
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
   app.get('/auth/facebook/callback',
              passport.authenticate('facebook', { successRedirect: '/profile',
@@ -16,6 +17,11 @@ module.exports = function(app, passport) {
   app.get('/api/userData', isLoggedInAjax, function(req, res) {
     res.json({user : req.user});//get User out of session
   });
+
+  app.post('/api/tweet', isLoggedInAjax, function(req, res) {
+    console.log(req.body);
+    var newTweet = new Tweet();
+  })
 
 
   app.get('*', function(req, res) {

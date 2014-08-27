@@ -1,11 +1,14 @@
 var mongoose = require('mongoose');
-var Status = require('./status.js');
+var Tweet = require('./tweet.js');
 
 var userSchema = mongoose.Schema({
-  username : String,
-  statuses : {
+  username    : String,
+  id          : String,
+  token       : String,
+  displayName : String,
+  statuses    : {
     type: mongoose.Schema.ObjectId,
-    ref: 'Status',
+    ref : 'Tweet',
     default: []
   }
 });
