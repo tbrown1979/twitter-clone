@@ -2,14 +2,19 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
   $routeProvider
   //home page
-    .when('/', {
-      templateUrl: 'views/home.html',
-      controller: 'MainController'
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginController'
     })
 
     .when('/profile', {
       templateUrl: 'views/profile.html',
-      controller: 'ProfileController'
+      controller: 'ProfileController',
+      resolve: {
+        userData: function(UserData) {
+          return UserData.get();
+        }
+      }
     })
 
   // nerds page that will use the NerdController

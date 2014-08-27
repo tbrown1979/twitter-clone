@@ -4,7 +4,7 @@ angular.module('twitterApp',
                 'appRoutes',
                 'AuthService',
                 'common-directives',
-                'MainCtrl',
+                'LoginCtrl',
                 'ProfileCtrl',
                 'UserDataService'
                 ]);
