@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook', passport.authenticate('facebook'));
 
   app.get('/auth/facebook/callback',
-             passport.authenticate('facebook', { successRedirect: '/',
+             passport.authenticate('facebook', { successRedirect: '/profile',
                                                  failureRedirect: '/login' }));
 
   app.get('/api/test', isLoggedIn, routes.testController);
