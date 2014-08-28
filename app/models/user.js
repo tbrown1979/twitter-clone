@@ -6,6 +6,7 @@ var userSchema = mongoose.Schema({
   id          : String,
   token       : String,
   displayName : String,
+  photo       : String
   // statuses    : {
   //   type: mongoose.Schema.ObjectId,
   //   ref : 'Tweet',

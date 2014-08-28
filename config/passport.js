@@ -12,7 +12,6 @@ module.exports = function(passport) {
 
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
-          console.log("ID: " + id);
           done(err, user);
         });
     });
@@ -20,8 +19,8 @@ module.exports = function(passport) {
   passport.use(new FacebookStrategy({
     clientID        : configAuth.facebookAuth.clientID,
     clientSecret    : configAuth.facebookAuth.clientSecret,
-    callbackURL     : configAuth.facebookAuth.callbackURL
-    //profileFields   : ['id', 'displayName', 'photos', 'emails', 'name']
+    callbackURL     : configAuth.facebookAuth.callbackURL,
+    profileFields   : ['id', 'displayName', 'photos', 'emails']
   },
 
   function(token, refreshToken, profile, done) {
@@ -32,14 +31,15 @@ module.exports = function(passport) {
         if (user) {
           return done(null, user);
         } else {
-          var newUser = new User();
-          newUser.username = profile.name.givenName + ' ' + profile.name.familyName;
-          newUser.id       = profile.id;
-          newUser.token    = token;
-          newUser.name     = profile.name.givenName + ' ' + profile.name.familyName;
-          newUser.email    = profile.emails[0].value;
 
-          newUser.save(function(err) {
+          new User({
+            username: profile.displayName,
+            id:       profile.id,
+            token:    token,
+            //name:     profile.name.givenName + ' ' + profile.name.familyName,
+            photo:    profile.photos[0].value,
+            email:    profile.emails[0].value
+          }).save(function(err, newUser) {
             if (err)
               throw err;
             return done(null, newUser);
