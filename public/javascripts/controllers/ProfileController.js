@@ -1,5 +1,5 @@
 angular.module('ProfileCtrl', []).controller(
-  'ProfileController', ['$scope', 'userData', 'Tweet', function($scope, userData, Tweet) {
+  'ProfileController', ['$scope', '$http', 'userData', 'Tweet', function($scope, $http, userData, Tweet) {
     console.log(userData);
     $scope.username = userData.data.user.username;
     $scope.tweet = "please enter something...";
@@ -8,5 +8,9 @@ angular.module('ProfileCtrl', []).controller(
       Tweet.create(tweetJson);
     }
     console.log($scope.username);
+
+    $http.get('/api/tweets/all').success(function(data, status) {
+      console.log("Data: " + data);
+    });
   }]
 );

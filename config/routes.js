@@ -19,6 +19,7 @@ module.exports = function(app, passport) {
   app.get('/api/test'    , isLoggedIn,     routes.testController);
   app.get('/api/userData', isLoggedInAjax, routes.retrieveUserData);
   app.post('/api/tweet'  , isLoggedInAjax, routes.storeTweet);
+  app.get('/api/tweets/all', isLoggedInAjax, routes.getUsersTweets);
 
   //Catch-all
   app.get('*', function(req, res) {

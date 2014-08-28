@@ -1,6 +1,14 @@
 var User = require('../models/user.js');
 var Tweet = require('../models/tweet.js');
 
+function jsonError(err) {
+  var json = {
+    status: "error",
+    error: err.errors
+  };
+  return json;
+}
+
 exports.home = function(req, res) {
   res.render('index', { title: 'Express' });
 };
@@ -16,16 +24,21 @@ exports.storeTweet = function(req, res) {
   newTweet.user = req.user;
   newTweet.save(function(err) {
     if (err) {
-      res.json({
-        status: "error",
-        error: err.errors
-      });
+      jsonError(err);
     }
     return res.json({status: "success"});
   });
 };
 
 exports.retrieveUserData = function(req, res) {
-  console.log(req.user);
   res.json({user : req.user});
 };
+
+exports.getUsersTweets = function(req, res) {
+  Tweet.find({user: req.user}, function(err, docs) {
+    if (err) {
+      jsonError(err);
+    }
+    return res.json({status: "success", tweets: docs});
+  })
+}
