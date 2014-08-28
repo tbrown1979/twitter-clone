@@ -1,5 +1,6 @@
 var User = require('../models/user.js');
 var Tweet = require('../models/tweet.js');
+var _ = require('underscore');
 
 function jsonError(err) {
   var json = {
@@ -35,10 +36,11 @@ exports.retrieveUserData = function(req, res) {
 };
 
 exports.getUsersTweets = function(req, res) {
-  Tweet.find({user: req.user}, function(err, docs) {
+  Tweet.find({user: req.user}, function(err, tweets) {
     if (err) {
       jsonError(err);
     }
-    return res.json({status: "success", tweets: docs});
+    var tweetInfo = _.map(tweets, function(tweet){return {text: tweet.text, user: req.user.username}});
+    return res.json({status: "success", "tweets": tweetInfo});
   })
 }

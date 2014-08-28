@@ -6,11 +6,13 @@ angular.module('ProfileCtrl', []).controller(
     $scope.createTweet = function(tweet) {
       var tweetJson = {"tweet": tweet};
       Tweet.create(tweetJson);
-    }
-    console.log($scope.username);
-
-    $http.get('/api/tweets/all').success(function(data, status) {
-      console.log("Data: " + data);
+    };
+    Tweet.getAll().success(function(data, status) {
+      $scope.tweets = data.tweets;
     });
+
+    // $http.get('/api/tweets/all').success(function(data, status) {
+    //   console.log("Data: " + data);
+    // });
   }]
 );
