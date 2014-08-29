@@ -1,8 +1,10 @@
 angular.module('ProfileCtrl', []).controller(
-  'ProfileController', ['$scope', '$http', 'userData', 'Tweet', function($scope, $http, userData, Tweet) {
+  'ProfileController',
+  ['$scope', '$http', 'User', 'Tweet', 'userData', function($scope, $http, User, Tweet, userData) {
     console.log(userData);
-    $scope.username = userData.data.user.username;
-    $scope.photo = userData.data.user.photo;
+    $scope.user = userData.data.user
+    $scope.username = $scope.user.username;
+    $scope.photo = $scope.user.photo;
     $scope.tweet = "please enter something...";
     $scope.createTweet = function(tweet) {
       var tweetJson = {"tweet": tweet};
@@ -11,9 +13,5 @@ angular.module('ProfileCtrl', []).controller(
     Tweet.getAll().success(function(data, status) {
       $scope.tweets = data.tweets;
     });
-
-    // $http.get('/api/tweets/all').success(function(data, status) {
-    //   console.log("Data: " + data);
-    // });
   }]
 );

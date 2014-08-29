@@ -11,8 +11,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
       templateUrl: 'views/profile.html',
       controller: 'ProfileController',
       resolve: {
-        userData: function(UserData) {
-          return UserData.get();
+        userData: function(User) {
+          return User.get();
         }
       }
     })
