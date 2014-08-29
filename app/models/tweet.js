@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 
 var tweetSchema = mongoose.Schema({
   text: String,
-  timestamp: Date,
-  user: {type : Schema.ObjectId, ref : 'User'}
+  date: { type: Date, default: Date.now },
+  user: { type : Schema.ObjectId, ref : 'User'}
 });
 
 module.exports = mongoose.model('Tweet', tweetSchema);

@@ -36,11 +36,13 @@ exports.retrieveUserData = function(req, res) {
 };
 
 exports.getUsersTweets = function(req, res) {
-  Tweet.find({user: req.user}, function(err, tweets) {
-    if (err) {
-      jsonError(err);
+  Tweet.find({user: req.user}).sort('-date').limit(20).exec(
+    function(err, tweets) {
+      if (err) {
+        jsonError(err);
+      }
+      var tweetInfo = _.map(tweets, function(tweet){return {text: tweet.text, user: req.user.username}});
+      return res.json({status: "success", "tweets": tweetInfo});
     }
-    var tweetInfo = _.map(tweets, function(tweet){return {text: tweet.text, user: req.user.username}});
-    return res.json({status: "success", "tweets": tweetInfo});
-  })
+  );
 }
