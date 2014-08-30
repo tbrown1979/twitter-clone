@@ -21,7 +21,7 @@
       <div class="header-container">
         <h1>Stuff, buddy</h1>
         <a href="/profile">CLICK ME</a>
-        <a href="/logout" redir ng-hide={{Auth.isAuthenticated}}>
+        <a href="/logout" redir ng-hide="!Auth.isAuthenticated" ng-cloak>
           <button>
             Logout
           </button>
