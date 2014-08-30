@@ -25,9 +25,12 @@ exports.storeTweet = function(req, res) {
   newTweet.user = req.user;
   newTweet.save(function(err) {
     if (err) {
-      jsonError(err);
+      res.json(jsonError(err));
     }
-    return res.json({status: "success"});
+    return res.json({
+      status: "success",
+      tweet: formatTweets([newTweet], req.user)
+    });
   });
 };
 
@@ -41,8 +44,13 @@ exports.getUsersTweets = function(req, res) {
       if (err) {
         jsonError(err);
       }
-      var tweetInfo = _.map(tweets, function(tweet){return {text: tweet.text, user: req.user.username}});
+      var tweetInfo = formatTweets(tweets, req.user)
       return res.json({status: "success", "tweets": tweetInfo});
     }
   );
+}
+
+function formatTweets(listOfTweets, user) {
+  console.log(listOfTweets);
+  return _.map(listOfTweets, function(tweet){return {text: tweet.text, user: user.username}});
 }
