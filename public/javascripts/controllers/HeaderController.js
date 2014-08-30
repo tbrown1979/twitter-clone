@@ -1,5 +1,8 @@
 angular.module('HeaderCtrl', []).controller(
-  'HeaderController', ['$scope', 'User', function($scope, $http, User) {
-    $scope.isAuthenticated = User.isAuthenticated();
+  'HeaderController', ['$scope', 'Auth', function($scope, Auth) {
+    console.log(Auth);
+    console.log(Auth.isAuthenticated);
+    $scope.Auth = Auth;
+    $scope.logout = Auth.logout;
   }]
 );

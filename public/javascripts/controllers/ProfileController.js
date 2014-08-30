@@ -1,8 +1,10 @@
 angular.module('ProfileCtrl', []).controller(
   'ProfileController',
-  ['$scope', '$http', 'User', 'Tweet', 'userData', function($scope, $http, User, Tweet, userData) {
+  ['$scope', '$http', 'User', 'Tweet', 'Auth', 'userData', function($scope, $http, User, Tweet, Auth, userData) {
     console.log(userData);
-    $scope.user = userData.data.user
+    Auth.isAuthenticated = true;
+    console.log("Profile auth: " + Auth.isAuthenticated);
+    $scope.user = userData.data.user;
     $scope.username = $scope.user.username;
     $scope.photo = $scope.user.photo;
     $scope.tweet = "please enter something...";
