@@ -2,13 +2,13 @@
 
 <img src={{photo}}>
 
-<div class="tweet">
+<div class="tweetSubmission">
   <input type="text" ng-model="tweet">
   <button ng-click="createTweet(tweet)">Submit</button>
 </div>
 
-<div>
-  <p ng-repeat="tweet in tweets track by $index" ng-cloak="true">
+<div class="tweet-container">
+  <div class="tweet" ng-repeat="tweet in tweets track by $index" ng-cloak="true">
     {{tweet.user}}: {{tweet.text}}
-  </p>
+  </div>
 </div>

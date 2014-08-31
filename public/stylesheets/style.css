@@ -29,6 +29,15 @@ header {
     width: 1024px;
 }
 
+header h1 {
+    display: inline;
+    padding: 0 8px;
+}
+
+header form {
+    display: inline-block;
+}
+
 .container {
     margin-top: 40px;
 }
@@ -47,11 +56,13 @@ header {
     font-size: 50px;
 }
 
-header h1 {
-    display: inline;
-    padding: 0 8px;
+.tweet-container {
+    width: 400px;
 }
 
-header form {
-    display: inline-block;
+.tweet {
+    margin-bottom: -1px;
+    padding: 10px;
+    border: 1px solid #e1e8ed;
+    background-color: #fff;
 }
