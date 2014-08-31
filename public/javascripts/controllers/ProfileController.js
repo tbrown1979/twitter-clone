@@ -6,8 +6,8 @@ angular.module('ProfileCtrl', []).controller(
     $scope.user     = userData.data.user;
     $scope.username = $scope.user.username;
     $scope.photo    = $scope.user.photo;
-    $scope.tweet    = "please enter something...";
     $scope.tweets   = [];
+    $scope.tweet;
     $scope.error;
 
     $scope.createTweet = function(tweet) {
@@ -16,6 +16,7 @@ angular.module('ProfileCtrl', []).controller(
         console.log("THE DATA :" + JSON.stringify(data));
         if (data.tweet) {
           $scope.tweets.unshift(data.tweet[0]);
+          $scope.tweet = "";
         } else {
           $scope.error = data.error;
         }
