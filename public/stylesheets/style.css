@@ -57,7 +57,10 @@ header form {
 }
 
 .tweet-container {
-    width: 400px;
+    width: 50%;
+    float: right;
+    margin-right: 25%;
+    margin-left: 25%
 }
 
 .tweet {
