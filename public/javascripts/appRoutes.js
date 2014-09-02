@@ -7,7 +7,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
       controller: 'LoginController'
     })
 
-    .when('/profile', {
+    .when('/user/:param', {
       templateUrl: 'views/profile.html',
       controller: 'ProfileController',
       resolve: {
@@ -17,18 +17,5 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
       }
     })
 
-  // nerds page that will use the NerdController
-  //   .when('/nerds', {
-  //     templateUrl: 'views/nerd.html',
-  //     controller: 'NerdController'
-  //   })
-
-  // //
-  //   .when('/geeks', {
-  //     templateUrl: 'views/geek.html',
-  //     controller: 'GeekController'
-  //   });
-
   $locationProvider.html5Mode(true);
-
 }]);

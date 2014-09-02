@@ -5,8 +5,8 @@ angular.module('TweetService', []).factory('Tweet', ['$http', function($http) {
       return $http.post('/api/tweet', data);
     },
 
-    getAll : function() {
-      return $http.get('/api/tweets/all');
+    getAll : function(id) {
+      return $http.get('/api/tweets/all?id=' + id);
     }
 
     // call to POST and create a new nerd

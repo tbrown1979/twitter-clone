@@ -39,7 +39,9 @@ exports.retrieveUserData = function(req, res) {
 };
 
 exports.getUsersTweets = function(req, res) {
-  Tweet.find({user: req.user}).sort('-date').limit(20).exec(
+  var id = req.params.id;
+  console.log("USER ID :" + id);
+  Tweet.find({"id": id}).sort('-date').limit(20).exec(
     function(err, tweets) {
       if (err) {
         jsonError(err);
