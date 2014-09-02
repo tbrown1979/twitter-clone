@@ -1,5 +1,5 @@
-angular.module('ProfileCtrl', []).controller(
-  'ProfileController',
+angular.module('UserPageCtrl', []).controller(
+  'UserPageController',
   ['$scope',
    '$routeParams',
    'User',
@@ -30,8 +30,10 @@ angular.module('ProfileCtrl', []).controller(
          }
        })
      };
-     Tweet.getAll($scope.userId).success(function(data, status) {
+     console.log($scope.user._id);
+     Tweet.getAll($scope.user._id).success(function(data, status) {
        $scope.tweets = data.tweets;
+       console.log(data.tweets);
      });
    }]
 );

@@ -20,10 +20,10 @@ module.exports = function(app, passport) {
   //---------------------
   //Api
   //---------------------
-  app.get('/api/test'    , isLoggedIn,     routes.testController);
-  app.get('/api/userData', isLoggedInAjax, routes.retrieveUserData);
-  app.post('/api/tweet'  , isLoggedInAjax, routes.storeTweet);
-  app.get('/api/tweets/all', isLoggedInAjax, routes.getUsersTweets);
+  app.get('/api/test'          , isLoggedIn,     routes.testController);
+  app.get('/api/userData'      , isLoggedInAjax, routes.retrieveUserData);
+  app.post('/api/tweet'        , isLoggedInAjax, routes.storeTweet);
+  app.get('/api/tweets/all/:id', isLoggedInAjax, routes.getUsersTweets);
 
   //Catch-all
   app.get('*', function(req, res) {

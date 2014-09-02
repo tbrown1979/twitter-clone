@@ -9,7 +9,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
     .when('/user/:param', {
       templateUrl: '/views/profile.html',
-      controller: 'ProfileController',
+      controller: 'UserPageController',
       resolve: {
         userData: function(User) {
           return User.get();

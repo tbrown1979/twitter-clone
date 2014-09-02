@@ -1,5 +1,7 @@
 var User = require('../models/user.js');
 var Tweet = require('../models/tweet.js');
+var ObjectId = require('mongoose').Types.ObjectId;
+
 var _ = require('underscore');
 
 function jsonError(err) {
@@ -40,8 +42,9 @@ exports.retrieveUserData = function(req, res) {
 
 exports.getUsersTweets = function(req, res) {
   var id = req.params.id;
+  console.log("PARAMS: " + JSON.stringify(req.params));
   console.log("USER ID :" + id);
-  Tweet.find({"id": id}).sort('-date').limit(20).exec(
+  Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
     function(err, tweets) {
       if (err) {
         jsonError(err);
@@ -54,5 +57,11 @@ exports.getUsersTweets = function(req, res) {
 
 function formatTweets(listOfTweets, user) {
   console.log(listOfTweets);
-  return _.map(listOfTweets, function(tweet){return {text: tweet.text, user: user.username}});
+  return _.map(listOfTweets, function(tweet){
+    return {
+      text: tweet.text,
+      user: user.username,
+      url: user.id
+    }
+  });
 }

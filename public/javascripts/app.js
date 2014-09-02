@@ -6,7 +6,7 @@ angular.module('twitterApp',
                 'TweetService',
                 'common-directives',
                 'LoginCtrl',
-                'ProfileCtrl',
+                'UserPageCtrl',
                 'HeaderCtrl',
                 'UserService'
                 ]);
