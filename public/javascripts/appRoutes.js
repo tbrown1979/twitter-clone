@@ -3,12 +3,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
   $routeProvider
   //home page
     .when('/login', {
-      templateUrl: 'views/login.html',
+      templateUrl: '/views/login.html',
       controller: 'LoginController'
     })
 
     .when('/user/:param', {
-      templateUrl: 'views/profile.html',
+      templateUrl: '/views/profile.html',
       controller: 'ProfileController',
       resolve: {
         userData: function(User) {
