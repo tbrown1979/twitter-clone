@@ -4,13 +4,11 @@ angular.module('UserPageCtrl', []).controller(
    '$routeParams',
    'User',
    'Tweet',
-//   'Auth',
    'userData',
    function($scope, $routeParams, User, Tweet, userData) {
      console.log($routeParams);
-     //Auth.isAuthenticated = true;
 
-     $scope.userId   = $routeParams.param;
+     $scope.id       = $routeParams.param;
      $scope.user     = userData.data.user;
      $scope.username = $scope.user.username;
      $scope.photo    = $scope.user.photo;
@@ -30,8 +28,8 @@ angular.module('UserPageCtrl', []).controller(
          }
        })
      };
-     console.log($scope.user._id);
-     Tweet.getAll($scope.user._id).success(function(data, status) {
+     console.log("USER ID" + $scope.user._id);
+     Tweet.getAll($scope.id).success(function(data, status) {
        $scope.tweets = data.tweets;
        console.log(data.tweets);
      });

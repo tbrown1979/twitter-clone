@@ -16,13 +16,14 @@
     <script src="/javascripts/directives/common-directives.js"></script>
     <script src="/javascripts/appRoutes.js"></script>
     <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/run.js"></script>
   </head>
   <body>
     <header ng-controller="HeaderController">
       <div class="header-container">
         <h1>Stuff, buddy</h1>
         <a href="/user/547026647">CLICK ME</a>
-        <a href="/logout" redir ng-hide="!isAuthenticated" ng-cloak>
+        <a href="/logout" redir ng-hide="!isAuthenticated()" ng-cloak>
           <button>
             Logout
           </button>
