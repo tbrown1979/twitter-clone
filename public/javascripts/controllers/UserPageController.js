@@ -17,7 +17,6 @@ angular.module('UserPageCtrl', []).controller(
      $scope.createTweet = function(tweet) {
        var tweetJson = {"tweet": tweet};
        Tweet.create(tweetJson).success(function(data) {
-         //console.log("THE DATA :" + JSON.stringify(data));
          if (data.tweet) {
            $scope.tweets.unshift(data.tweet[0]);
            $scope.tweet = "";
@@ -29,7 +28,6 @@ angular.module('UserPageCtrl', []).controller(
 
      Tweet.getAll($scope.id).success(function(data, status) {
        $scope.tweets = data.tweets;
-       //console.log(data.tweets);
      });
    }]
 );

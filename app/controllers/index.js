@@ -69,26 +69,25 @@ exports.retrieveSpecificUserData = function(req, res) {
 
 exports.getUsersTweets = function(req, res) {
   var id = req.params.id;
-    Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
-      function(err, tweets) {
-        if (err) {
-          consol
-          jsonError(err);
-        }
-        var tweetInfo = formatTweets(tweets, req.user)
-        return res.json({status: "success", "tweets": tweetInfo});
+  Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
+    function(err, tweets) {
+      if (err) {
+        consol
+        jsonError(err);
       }
-    );
-
+      var tweetInfo = formatTweets(tweets);
+      return res.json({status: "success", "tweets": tweetInfo});
+    }
+  );
 }
 
-function formatTweets(listOfTweets, user) {
+function formatTweets(listOfTweets) {
   console.log(listOfTweets);
   return _.map(listOfTweets, function(tweet){
     return {
       text: tweet.text,
-      user: user.username,
-      url: user.id
+      user: tweet.user.username,
+      url: tweet.user.id
     }
   });
 }
