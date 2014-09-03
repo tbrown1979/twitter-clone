@@ -69,7 +69,8 @@ exports.retrieveSpecificUserData = function(req, res) {
 
 exports.getUsersTweets = function(req, res) {
   var id = req.params.id;
-  Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
+  console.log(id);
+  Tweet.find({'user._id': new ObjectId(id)}).sort('-date').limit(20).exec(
     function(err, tweets) {
       if (err) {
         consol
