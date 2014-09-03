@@ -16,6 +16,10 @@ exports.home = function(req, res) {
   res.render('index', { title: 'Express' });
 };
 
+exports.authCheck = function(req, res) {
+  res.json({status: "success"});
+}
+
 exports.testController = function(req, res) {
   res.render('index', { 'user': req.user.username });
 }
@@ -40,19 +44,42 @@ exports.retrieveUserData = function(req, res) {
   res.json({user : req.user});
 };
 
+exports.retrieveSpecificUserData = function(req, res) {
+  var id = req.params.id;
+  try {
+    var userObjectId = new ObjectId(id);
+    User.findOne({_id: userObjectId}, function(err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (user) {
+        res.json({user: user});
+      }
+      //User doesn't exist, we just go to the 404
+      // else {
+      //   res.json({user: user});
+      //}
+    });
+  } catch(err) {
+    //better solution needed here
+    res.json({redirect : "/404", message : "This is not a valid user_id"});
+  }
+};
+
+
 exports.getUsersTweets = function(req, res) {
   var id = req.params.id;
-  console.log("PARAMS: " + JSON.stringify(req.params));
-  console.log("USER ID :" + id);
-  Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
-    function(err, tweets) {
-      if (err) {
-        jsonError(err);
+    Tweet.find({"user": new ObjectId(id)}).sort('-date').limit(20).exec(
+      function(err, tweets) {
+        if (err) {
+          consol
+          jsonError(err);
+        }
+        var tweetInfo = formatTweets(tweets, req.user)
+        return res.json({status: "success", "tweets": tweetInfo});
       }
-      var tweetInfo = formatTweets(tweets, req.user)
-      return res.json({status: "success", "tweets": tweetInfo});
-    }
-  );
+    );
+
 }
 
 function formatTweets(listOfTweets, user) {

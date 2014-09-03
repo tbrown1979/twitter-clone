@@ -13,6 +13,7 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook/callback',
              passport.authenticate('facebook', { successRedirect: '/',
                                                  failureRedirect: '/login' }));
+  app.get('/auth/check', isLoggedInAjax, routes.authCheck)
   app.get('/logout', function(req, res) {
       req.logout();
       res.redirect('/login');
@@ -22,6 +23,7 @@ module.exports = function(app, passport) {
   //---------------------
   app.get('/api/test'          , isLoggedIn,     routes.testController);
   app.get('/api/userData'      , isLoggedInAjax, routes.retrieveUserData);
+  app.get('/api/userData/:id'  , isLoggedInAjax, routes.retrieveSpecificUserData);
   app.post('/api/tweet'        , isLoggedInAjax, routes.storeTweet);
   app.get('/api/tweets/all/:id', isLoggedInAjax, routes.getUsersTweets);
 
@@ -30,7 +32,8 @@ module.exports = function(app, passport) {
     res.sendfile('./public/views/index.html'); // load our public/index.html file
   });
 };
-
+//Can maybe make an error page that we can redirect to if there were errors
+//Such as if you use the wrong url when trying to find a user
 function isLoggedInAjax(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.json( { redirect: '/login' } );

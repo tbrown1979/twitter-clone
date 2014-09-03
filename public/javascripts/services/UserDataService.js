@@ -10,6 +10,9 @@ angular.module('UserService', []).factory('User', ['$http', function($http) {
     get : function() {
       return $http.get('/api/userData');
     },
+    getSpecificUserData : function(id) {
+      return $http.get('/api/userData/' + id);
+    },
     getIsAuthenticated : getIsAuthenticated,
     loggedIn : function() {
       isAuthenticated = true;

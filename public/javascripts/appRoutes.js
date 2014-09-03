@@ -11,8 +11,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
       templateUrl: '/views/profile.html',
       controller: 'UserPageController',
       resolve: {
-        userData: function(User) {
-          return User.get();
+        userData: function(User, $route) {
+          console.log("PARAMS " + JSON.stringify($route.current.params.param));
+          return User.getSpecificUserData($route.current.params.param);
         }
       }
     })
