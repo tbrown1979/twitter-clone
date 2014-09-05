@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook/callback',
              passport.authenticate('facebook', { successRedirect: '/',
                                                  failureRedirect: '/login' }));
-  app.get('/auth/check', isLoggedInAjax, routes.authCheck)
+  app.get('/auth/check', simpleAuthCheck, routes.authCheck)
   app.get('/logout', function(req, res) {
       req.logout();
       res.redirect('/login');
@@ -34,6 +34,14 @@ module.exports = function(app, passport) {
 };
 //Can maybe make an error page that we can redirect to if there were errors
 //Such as if you use the wrong url when trying to find a user
+function simpleAuthCheck(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.json( { status: 'failure' } );
+  } else {
+    next();
+  }
+}
+
 function isLoggedInAjax(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.json( { redirect: '/login' } );

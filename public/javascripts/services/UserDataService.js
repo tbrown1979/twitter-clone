@@ -13,6 +13,9 @@ angular.module('UserService', []).factory('User', ['$http', function($http) {
     getSpecificUserData : function(id) {
       return $http.get('/api/userData/' + id);
     },
+    checkAuth: function() {
+      return $http.get('/auth/check');
+    },
     getIsAuthenticated : getIsAuthenticated,
     loggedIn : function() {
       isAuthenticated = true;
