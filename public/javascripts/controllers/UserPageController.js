@@ -16,15 +16,16 @@ angular.module('UserPageCtrl', []).controller(
 
      $scope.createTweet = function(tweet) {
        var tweetJson = {"tweet": tweet};
-       Tweet.create(tweetJson).success(function(data) {
-         if (data.tweet) {
-           $scope.tweets.unshift(data.tweet[0]);
-           $scope.tweet = "";
-         } else {
-           $scope.error = data.error;
-         }
-       })
-     };
+       Tweet.create(tweetJson)
+         // .success(function(data) {
+         // if (data.tweet) {
+         //   $scope.tweets.unshift(data.tweet[0]);
+         //   $scope.tweet = "";
+         // } else {
+         //   $scope.error = data.error;
+         //}
+       //})
+       };
 
      Tweet.getAll($scope.id).success(function(data, status) {
        $scope.tweets = data.tweets;
