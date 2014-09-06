@@ -1,4 +1,20 @@
-<div class="tweetSubmission">
-  <input type="text" ng-model="tweet">
-  <button ng-click="createTweet(tweet)">Submit</button>
+<div>
+  <div class="modal fade tweetSubmission">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" ng-click="createTweet(tweet)" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+          <input type="text" ng-model="tweet">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

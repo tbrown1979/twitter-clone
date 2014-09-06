@@ -25,7 +25,6 @@ exports.testController = function(req, res) {
 }
 
 exports.storeTweet = function(req, res) {
-  console.log(req.body);
   var newTweet = new Tweet();
   newTweet.text = req.body.tweet;
   newTweet.user = req.user;

@@ -27,7 +27,7 @@ angular.module('UserPageCtrl', []).controller(
        //})
        };
 
-     Tweet.getAll($scope.id).success(function(data, status) {
+     Tweet.getById($scope.id).success(function(data, status) {
        $scope.tweets = data.tweets;
      });
    }]

@@ -2,8 +2,4 @@
 
 <img src={{photo}}>
 
-<div class="tweet-container">
-  <div class="tweet" ng-repeat="tweet in tweets track by $index" ng-cloak="true">
-    {{tweet.user}}: {{tweet.text}}
-  </div>
-</div>
+<ng-include src="'/views/partials/tweet-list.html'">
