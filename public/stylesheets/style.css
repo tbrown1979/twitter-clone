@@ -8,9 +8,9 @@ html, body {
 }
 
 body {
-    background-color: #4F9AB8;
-    margin: 0 auto;
-    width: 1024px;
+    background-color: #F2F0F2;
+    /* margin: 0 auto; */
+    /* width: 1024px; */
     font-family: 'Oswald', sans-serif;
 }
 
@@ -23,10 +23,11 @@ header {
 }
 
 .header-container {
-    height: 40px;
-    margin: 0 auto;
-    position: relative;
+    /* height: 40px; */
+    /* margin: 0 auto; */
+    /* position: relative; */
     width: 1024px;
+    /* overflow: hidden; */
 }
 
 header h1 {
@@ -38,8 +39,11 @@ header form {
     display: inline-block;
 }
 
-.container {
-    margin-top: 40px;
+.content-container {
+    background-color: #F2F0F5;
+    height: 100%;
+    width: 1024px;
+    margin: 0 auto;
 }
 
 .content {
@@ -56,16 +60,29 @@ header form {
     font-size: 50px;
 }
 
+.profile-container {
+    padding-top: 5px;
+}
+
 .tweet-container {
-    width: 50%;
-    float: right;
-    margin-right: 25%;
-    margin-left: 25%
+    width: 100%;
 }
 
 .tweet {
     margin-bottom: -1px;
     padding: 10px;
     border: 1px solid #e1e8ed;
+    background-color: #fff;
+}
+
+textarea {
+    width: 100%;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.navbar {
+    margin-bottom: 0px;
     background-color: #fff;
 }

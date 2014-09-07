@@ -4,9 +4,13 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 
     <script src="/javascripts/factories/httpInterceptor.js"></script>
     <script src="/javascripts/services/TweetService.js"></script>
@@ -21,19 +25,26 @@
     <script src="/javascripts/run.js"></script>
   </head>
   <body>
-    <header ng-controller="HeaderController">
-      <div class="header-container">
-        <h1>Stuff, buddy</h1>
-        <a href="/user/53ffa2c6dff6d3882d5d8cfb">CLICK ME</a>
-        <a href="/">CLICK</a>
-        <a href="/logout" redir ng-hide="!isAuthenticated()" ng-cloak>
-          <button>
-            Logout
-          </button>
-        </a>
+
+    <nav ng-controller="HeaderController" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid header-container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Twitter Clone</a>
+        </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/user/53ffa2c6dff6d3882d5d8cfb">Taylor's Page</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a redir href="/logout" ng-hide="!isAuthenticated()">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div ng-include="'/views/partials/tweet-submission.html'" ng-hide="!isAuthenticated()"></div>
+          </form>
       </div>
-    </header>
-    <div class="container">
+    </nav>
+
+    <div class="content-container">
       <div ng-view></div>
     </div>
   </body>

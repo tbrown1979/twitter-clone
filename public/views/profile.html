@@ -1,5 +1,10 @@
-{{username}}
+<div class="profile-container">
+  <div class="col-md-4">
+    <img src={{photo}}>
+    {{username}}
+  </div>
 
-<img src={{photo}}>
-
-<ng-include src="'/views/partials/tweet-list.html'">
+  <div class="col-md-8">
+    <ng-include src="'/views/partials/tweet-list.html'">
+  </div>
+</div>

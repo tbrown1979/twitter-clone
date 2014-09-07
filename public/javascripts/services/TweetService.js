@@ -1,7 +1,8 @@
 angular.module('TweetService', []).factory('Tweet', ['$http', function($http) {
 
   return {
-    create : function(data) {
+    create : function(text) {
+      var data = {tweet: text}
       return $http.post('/api/tweet', data);
     },
 

@@ -1,19 +1,20 @@
-<div>
-  <div class="modal fade tweetSubmission">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" ng-click="createTweet(tweet)" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-          <input type="text" ng-model="tweet">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit Changes</button>
-        </div>
+<button class="test btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
+  New Tweet
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Tweet</h4>
+      </div>
+      <div class="modal-body">
+        <textarea ng-model="tweetText"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button data-dismiss="modal" ng-click="createTweet(tweetText)" type="button" class="btn btn-primary">Create</button>
       </div>
     </div>
   </div>
