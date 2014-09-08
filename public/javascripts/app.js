@@ -8,5 +8,6 @@ var app = angular.module('twitterApp',
                           'UserPageCtrl',
                           'MainPageCtrl',
                           'HeaderCtrl',
+                          'UserDataCtrl',
                           'UserService'
                          ]);
