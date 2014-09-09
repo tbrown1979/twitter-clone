@@ -4,11 +4,13 @@ angular.module('UserDataCtrl', []).controller(
    'User',
    function($scope, User) {
      console.log("UserController");
+     $scope.isAuthenticated = function() {User.getIsAuthenticated()};
      User.get().success(function(data) {
        console.log(data);
        $scope.userData = data;
-       $scope.userPage = "/user/" + data.user._id;
-       console.log($scope.userData);
+       $scope.userPageUrl = "/user/" + data.user._id;
+       $scope.username = data.user.username;
+       $scope.photo = data.user.photo;
      })
    }
   ]

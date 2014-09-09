@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="twitterApp">
   <head>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
@@ -24,11 +24,12 @@
     <script src="/javascripts/appRoutes.js"></script>
     <script src="/javascripts/app.js"></script>
     <script src="/javascripts/run.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body ng-controller="UserDataController as user">
 
     <nav ng-controller="HeaderController" class="navbar navbar-default" role="navigation">
-      <div class="container-fluid header-container">
+      <div class="container-fluid container">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">Twitter Clone</a>
         </div>
@@ -40,17 +41,17 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a redir href="/logout">Logout</a></li>
           </ul>
-          <form class="navbar-form navbar-right" role="search">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href={{userPageUrl}}>{{username}}</a></li>
+          </ul>
+          <form class="nav navbar-form navbar-right" role="search">
             <div ng-include="'/views/partials/tweet-submission.html'"></div>
           </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href={{userPage}}>{{userData.user.username}}</a></li>
-          </ul>
         </div>
       </div>
     </nav>
 
-    <div class="content-container">
+    <div class="container">
       <div ng-view></div>
     </div>
   </body>

@@ -22,7 +22,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
       controller: 'MainPageController'
     })
 
-    .otherwise({redirecTo: '/login'})
+    .otherwise({redirecTo: '/'})
 
   $locationProvider.html5Mode(true);
 }]);

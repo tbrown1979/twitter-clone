@@ -54,10 +54,6 @@ exports.retrieveSpecificUserData = function(req, res) {
       if (user) {
         res.json({user: user});
       }
-      //User doesn't exist, we just go to the 404
-      // else {
-      //   res.json({user: user});
-      //}
     });
   } catch(err) {
     //better solution needed here
@@ -68,11 +64,9 @@ exports.retrieveSpecificUserData = function(req, res) {
 
 exports.getUsersTweets = function(req, res) {
   var id = req.params.id;
-  console.log(id);
   Tweet.find({'user._id': new ObjectId(id)}).sort('-date').limit(20).exec(
     function(err, tweets) {
       if (err) {
-        consol
         jsonError(err);
       }
       var tweetInfo = formatTweets(tweets);
@@ -81,8 +75,20 @@ exports.getUsersTweets = function(req, res) {
   );
 }
 
+exports.getTweetPage = function(req, res) {
+  var pageNum = req.params.pageNum;
+  console.log("PAGE NUMBER: " + pageNum);
+  var options = {perPage: 20, page: pageNum};
+  Tweet.list(options, function(err, tweets) {
+    if (err) {
+      jsonError(err);
+    }
+    var tweetInfo = formatTweets(tweets);
+    return res.json({status: "success", "tweets": tweetInfo});
+  });
+}
+
 function formatTweets(listOfTweets) {
-  console.log(listOfTweets);
   return _.map(listOfTweets, function(tweet){
     return {
       text: tweet.text,

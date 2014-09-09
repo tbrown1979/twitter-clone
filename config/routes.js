@@ -21,11 +21,12 @@ module.exports = function(app, passport) {
   //---------------------
   //Api
   //---------------------
-  app.get('/api/test'          , isLoggedIn,     routes.testController);
-  app.get('/api/userData'      , isLoggedInAjax, routes.retrieveUserData);
-  app.get('/api/userData/:id'  , isLoggedInAjax, routes.retrieveSpecificUserData);
-  app.post('/api/tweet'        , isLoggedInAjax, routes.storeTweet);
-  app.get('/api/tweets/all/:id', isLoggedInAjax, routes.getUsersTweets);
+  app.get('/api/test'                , isLoggedIn,     routes.testController);
+  app.get('/api/userData'            , isLoggedInAjax, routes.retrieveUserData);
+  app.get('/api/userData/:id'        , isLoggedInAjax, routes.retrieveSpecificUserData);
+  app.post('/api/tweet'              , isLoggedInAjax, routes.storeTweet);
+  app.get('/api/tweets/all/:id'      , isLoggedInAjax, routes.getUsersTweets);
+  app.get('/api/tweets/page/:pageNum', isLoggedInAjax, routes.getTweetPage);
 
   //Catch-all
   app.get('*', function(req, res) {
