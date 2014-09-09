@@ -27,32 +27,33 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body ng-controller="UserDataController as user">
+    <div class="body-container">
 
-    <nav ng-controller="HeaderController" class="navbar navbar-default" role="navigation">
-      <div class="container-fluid container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">Twitter Clone</a>
+      <nav ng-controller="HeaderController" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Twitter Clone</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/user/53ffa2c6dff6d3882d5d8cfb">Taylor's Page</a></li>
+          </ul>
+          <div ng-hide="!isAuthenticated()">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a redir href="/logout">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href={{userPageUrl}}>{{username}}</a></li>
+            </ul>
+            <form class="nav navbar-form navbar-right" role="search">
+              <div ng-include="'/views/partials/tweet-submission.html'"></div>
+            </form>
+          </div>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/user/53ffa2c6dff6d3882d5d8cfb">Taylor's Page</a></li>
-        </ul>
+      </nav>
 
-        <div ng-hide="!isAuthenticated()">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a redir href="/logout">Logout</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href={{userPageUrl}}>{{username}}</a></li>
-          </ul>
-          <form class="nav navbar-form navbar-right" role="search">
-            <div ng-include="'/views/partials/tweet-submission.html'"></div>
-          </form>
-        </div>
+      <div class="container">
+        <div ng-view></div>
       </div>
-    </nav>
-
-    <div class="container">
-      <div ng-view></div>
     </div>
   </body>
 </html>

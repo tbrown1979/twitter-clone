@@ -9,6 +9,10 @@ body {
     /* width: 1024px; */
 }
 
+.body-container {
+    background-color: #F2F0F2;
+}
+
 /* header { */
 /*     background-color: #FF9900; */
 /*     position: fixed; */
@@ -48,15 +52,19 @@ body {
     padding-top: 5px;
 }
 
-/* .tweet-container { */
-/*     width: 100%; */
-/* } */
+.tweet-container {
+    padding-right: 0px;
+}
 
 .tweet {
     margin-bottom: -1px;
     padding: 10px;
     border: 1px solid #e1e8ed;
     background-color: #fff;
+}
+
+.tweet-list {
+    padding-right: 0px;
 }
 
 textarea {
@@ -66,9 +74,15 @@ textarea {
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-a {
+.navbar-default
+.navbar-brand {
     color: #428bca;
-    background-color: #fff;
+}
+
+.navbar-default
+.navbar-nav>li>a {
+    color:#428bca;
+    padding-right: 0px;
 }
 
 .logged-user {

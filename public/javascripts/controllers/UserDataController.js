@@ -4,7 +4,7 @@ angular.module('UserDataCtrl', []).controller(
    'User',
    function($scope, User) {
      console.log("UserController");
-     $scope.isAuthenticated = function() {User.getIsAuthenticated()};
+     $scope.isAuthenticated = User.getIsAuthenticated;
      User.get().success(function(data) {
        console.log(data);
        $scope.userData = data;
